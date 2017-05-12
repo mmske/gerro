@@ -20,15 +20,25 @@ void Window::feltolt()
             tx[i*j]=new StaticText(30*i,30*j,30,30," ");
             widgets.push_back(ex[i*j]);
             widgets.push_back(tx[i*j]);
+//            if(ex[i*j]->is_checked()==true && kov_jatekos==true)
+//            {
+//                tx[i*j]->setText(tx[i*j]->value());
+//                kov_jatekos==false;
+//            }
+//            else if(ex[i*j]->is_checked()==true && kov_jatekos==false)
+//            {
+//                tx[i*j]->setText(tx[i*j]->value2());
+//                kov_jatekos==true;
+//            }
         }
     }
 }
 
 void Window::motor()
 {
-    for(size_t i=0;i<widgets.size();i++)
-        {
-            if((widgets*[i]->ex[i])->is_checked==true && kov_jatekos==true)
+    for(size_t i=0; i<widgets.size(); i++)
+    {
+        if((widgets*[i].ex[i])->is_checked()==true && kov_jatekos==true)
             {
                 tx->setText(tx->value());
                 kov_jatekos==false;
@@ -38,7 +48,7 @@ void Window::motor()
                 tx->setText(tx->value2());
                 kov_jatekos==true;
             }
-        }
+    }
 }
 
 
@@ -50,41 +60,24 @@ void Window::event_loop()
     unsigned int focus = -1;
     while(gin >> ev )
     {
-        if (ev.type == ev_key && ev.keycode == key_tab)
-        {
-            if(focus!=-1)
-            {
-                widgets[focus]->unfocus();
-            }
-            do
-            {
-                focus++;
-                if (focus>=widgets.size()) focus =0;
-            }
-            while (!widgets[focus]->focusable());   //TODO:vegtelenciklus!
-            widgets[focus]->focus();
-        }
         if (ev.type == ev_mouse && ev.button==btn_left)
         {
-            for (unsigned int i=0; i<widgets.size(); i++)
+            for (size_t i=0; i<widgets.size(); i++)
             {
-                if (widgets[i]->is_selected(ev.pos_x, ev.pos_y) && widgets[i]->focusable())
+                if (widgets[i]->is_selected(ev.pos_x, ev.pos_y))
                 {
-                    if (focus!=-1) widgets[focus]->unfocus();
                     focus = i;
-                    widgets[focus]->focus();
                 }
             }
-        }
-        for (unsigned int i=0; i<widgets.size(); i++)
-        {
-            widgets[i]->draw();
         }
         if (focus!=-1)
         {
             widgets[focus]->handle(ev);
         }
+        for (size_t i=0; i<widgets.size(); i++)
+        {
+            widgets[i]->draw();
+        }
         gout << refresh;
     }
 }
-
