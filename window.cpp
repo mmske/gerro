@@ -28,20 +28,19 @@ void Window::feltolt()
 
 void Window::motor()
 {
-//    event ev;
-//    for(size_t i=0; i<widgets.size(); i++)
-//    {
-//        if(widgets[i]->is_selected(ev.pos_x, ev.pos_y) && ev.button==btn_left && kov_jatekos==true)
-//            {
-//                tx->setText(tx->value());
-//                kov_jatekos==false;
-//            }
-//            if(ex->is_checked==true && kov_jatekos==false)
-//            {
-//                tx->setText(tx->value2());
-//                kov_jatekos==true;
-//            }
-//    }
+    for(size_t i=0; i<widgets.size(); i++)
+    {
+        if( && kov_jatekos==true)
+            {
+                tx->setText(tx->value());
+                kov_jatekos==false;
+            }
+            if(ex->is_checked==true && kov_jatekos==false)
+            {
+                tx->setText(tx->value2());
+                kov_jatekos==true;
+            }
+    }
 }
 
 
