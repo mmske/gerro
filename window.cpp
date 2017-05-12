@@ -30,7 +30,7 @@ void Window::motor()
 {
     for(size_t i=0; i<widgets.size(); i++)
     {
-        if( && kov_jatekos==true)
+        if((tx*)widgets[i]->is_checked() && kov_jatekos==true)
             {
                 tx->setText(tx->value());
                 kov_jatekos==false;
