@@ -1,7 +1,6 @@
 #ifndef WINDOW_HPP_INCLUDED
 #define WINDOW_HPP_INCLUDED
 
-#include "widgets.hpp"
 #include "examplecheckbox.hpp"
 #include "statictext.hpp"
 #include <vector>
@@ -22,7 +21,5 @@ public:
     void feltolt() ;
     void motor() ;
 };
-
-
 
 #endif // WINDOW_HPP_INCLUDED

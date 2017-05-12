@@ -3,7 +3,6 @@
 
 #include "graphics.hpp"
 #include "widgets.hpp"
-#include "window.hpp"
 
 class ExampleCheckBox : public Widget
 {
@@ -14,7 +13,10 @@ public:
     ExampleCheckBox(int x, int y, int sx, int sy);
     virtual void draw() const ;
     virtual void handle(genv::event ev);
-    virtual bool is_checked() const ;
+    bool is_checked() const
+    {
+        return _checked;
+    }
 
 };
 

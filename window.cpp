@@ -13,9 +13,9 @@ Window::Window(int XX,int YY,int db,string neve):_XX(XX),_YY(YY),_db(db),_neve(n
 
 void Window::feltolt()
 {
-    for(unsigned int i=0; i<_db; i++)
+    for(int i=0; i<_db; i++)
     {
-        for(unsigned int j=0; j<_db; j++)
+        for(int j=0; j<_db; j++)
         {
             StaticText *tx[i*j];
             ExampleCheckBox *ex[i*j];
@@ -29,18 +29,24 @@ void Window::feltolt()
 
 void Window::motor()
 {
-    for(int i=0; i<widgetsex.size(); i++)
+    for(int i=0; i<widgetstx.size(); i++)
     {
         if(widgetsex[i]->is_checked() && kov_jatekos==true)
         {
             {
-                tx->setText(tx->value());
+                for(int j=0; i<widgetstx.size(); j++)
+                {
+                    widgetstx[j]->setText(widgetstx[j]->value());
+                }
                 kov_jatekos=false;
             }
         }
-        if(ex->is_checked==true && kov_jatekos==false)
+        if(widgetsex[i]->is_checked() && kov_jatekos==false)
         {
-            tx->setText(tx->value2());
+            for(int j=0; i<widgetstx.size(); j++)
+            {
+                widgetstx[j]->setText(widgetstx[j]->value2());
+            }
             kov_jatekos=true;
         }
     }
@@ -57,21 +63,23 @@ void Window::event_loop()
     {
         if (ev.type == ev_mouse && ev.button==btn_left)
         {
-            for (size_t i=0; i<widgets.size(); i++)
+            for (size_t i=0; i<widgetsex.size(); i++)
             {
-                if (widgets[i]->is_selected(ev.pos_x, ev.pos_y))
+                if (widgetsex[i]->is_selected(ev.pos_x, ev.pos_y))
                 {
                     focus = i;
                 }
             }
         }
-        for (size_t i=0; i<widgets.size(); i++)
+        for (size_t i=0; i<widgetsex.size(); i++)
         {
-            widgets[i]->draw();
+            widgetsex[i]->draw();
+            widgetstx[i]->draw();
         }
         if (focus!=-1)
         {
-            widgets[focus]->handle(ev);
+            widgetsex[focus]->handle(ev);
+            widgetstx[focus]->handle(ev);
         }
         gout << refresh;
     }
