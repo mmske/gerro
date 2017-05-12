@@ -1,9 +1,11 @@
 #include "window.hpp"
 #include "statictext.hpp"
 #include "examplecheckbox.hpp"
+#include "iostream"
 using namespace genv;
+using namespace std;
 
-Window::Window(int XX,int YY,int db,std::string neve):_XX(XX),_YY(YY),_db(db),_neve(neve)
+Window::Window(int XX,int YY,int db,string neve):_XX(XX),_YY(YY),_db(db),_neve(neve)
 {
     kov_jatekos=true;
 }
@@ -20,35 +22,36 @@ void Window::feltolt()
             tx[i*j]=new StaticText(30*i,30*j,30,30," ");
             widgets.push_back(ex[i*j]);
             widgets.push_back(tx[i*j]);
-//            if(ex[i*j]->is_checked()==true && kov_jatekos==true)
-//            {
-//                tx[i*j]->setText(tx[i*j]->value());
-//                kov_jatekos==false;
-//            }
-//            else if(ex[i*j]->is_checked()==true && kov_jatekos==false)
-//            {
-//                tx[i*j]->setText(tx[i*j]->value2());
-//                kov_jatekos==true;
-//            }
+            if(ex[i*j]->is_checked()==true && kov_jatekos==true)
+            {
+                tx[i*j]->setText(tx[i*j]->value());
+                kov_jatekos==false;
+            }
+            else if(ex[i*j]->is_checked()==true && kov_jatekos==false)
+            {
+                tx[i*j]->setText(tx[i*j]->value2());
+                kov_jatekos==true;
+            }
         }
     }
 }
 
 void Window::motor()
 {
-    for(size_t i=0; i<widgets.size(); i++)
-    {
-        if((widgets*[i].ex[i])->is_checked()==true && kov_jatekos==true)
-            {
-                tx->setText(tx->value());
-                kov_jatekos==false;
-            }
-            if(ex->is_checked==true && kov_jatekos==false)
-            {
-                tx->setText(tx->value2());
-                kov_jatekos==true;
-            }
-    }
+//    event ev;
+//    for(size_t i=0; i<widgets.size(); i++)
+//    {
+//        if(widgets[i]->is_selected(ev.pos_x, ev.pos_y) && ev.button==btn_left && kov_jatekos==true)
+//            {
+//                tx->setText(tx->value());
+//                kov_jatekos==false;
+//            }
+//            if(ex->is_checked==true && kov_jatekos==false)
+//            {
+//                tx->setText(tx->value2());
+//                kov_jatekos==true;
+//            }
+//    }
 }
 
 
