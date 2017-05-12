@@ -2,6 +2,8 @@
 #define WINDOW_HPP_INCLUDED
 
 #include "widgets.hpp"
+#include "examplecheckbox.hpp"
+#include "statictext.hpp"
 #include <vector>
 
 using namespace std;
@@ -9,7 +11,8 @@ using namespace std;
 class Window
 {
 protected:
-    vector<Widget*> widgets;
+    vector<ExampleCheckBox*> widgetsex;
+    vector<StaticText*> widgetstx;
     string _neve;
     int _XX,_YY,_db;
     bool kov_jatekos;

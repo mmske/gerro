@@ -11,7 +11,7 @@ void StaticText::draw() const
 {
     gout << move_to(_x+15,_y+15) << color(255,255,255) << text(_s);
 }
-void StaticText::handle()
+void StaticText::vizsgal()
 {
     if(_s=="X" || _s=="O")
         voltmar=true;

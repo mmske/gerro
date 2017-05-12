@@ -11,7 +11,7 @@ protected:
 public:
     StaticText(int x, int y, int sx, int sy, std::string s);
     virtual void draw() const ;
-    virtual void handle() ;
+    virtual void vizsgal() ;
     virtual bool is_voltmar() const ;
     void setText(std::string s)
     {
