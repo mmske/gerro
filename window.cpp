@@ -22,16 +22,6 @@ void Window::feltolt()
             tx[i*j]=new StaticText(30*i,30*j,30,30," ");
             widgets.push_back(ex[i*j]);
             widgets.push_back(tx[i*j]);
-            if(ex[i*j]->is_checked()==true && kov_jatekos==true)
-            {
-                tx[i*j]->setText(tx[i*j]->value());
-                kov_jatekos==false;
-            }
-            else if(ex[i*j]->is_checked()==true && kov_jatekos==false)
-            {
-                tx[i*j]->setText(tx[i*j]->value2());
-                kov_jatekos==true;
-            }
         }
     }
 }
