@@ -33,20 +33,13 @@ void Window::motor()
     {
         if(widgetsex[i]->is_checked() && kov_jatekos==true)
         {
-            {
-                for(int j=0; i<widgetstx.size(); j++)
-                {
-                    widgetstx[j]->setText(widgetstx[j]->value());
-                }
-                kov_jatekos=false;
-            }
+            widgetstx[i]->setText(widgetstx[i]->value());
+            kov_jatekos=false;
+
         }
-        if(widgetsex[i]->is_checked() && kov_jatekos==false)
+        else if(widgetsex[i]->is_checked() && kov_jatekos==false)
         {
-            for(int j=0; i<widgetstx.size(); j++)
-            {
-                widgetstx[j]->setText(widgetstx[j]->value2());
-            }
+            widgetstx[i]->setText(widgetstx[i]->value2());
             kov_jatekos=true;
         }
     }
