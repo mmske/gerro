@@ -1,10 +1,15 @@
 #include "statictext.hpp"
+#include "graphics.hpp"
 #include <string>
+
 using namespace std;
 using namespace genv;
+
 StaticText::StaticText(int x, int y, int sx, int sy, string s) : Widget(x,y,sx,sy)
 {
     _s=s;
+    xvolt=false;
+    ovolt=false;
     voltmar=false;
 }
 void StaticText::draw() const
@@ -13,11 +18,25 @@ void StaticText::draw() const
 }
 void StaticText::vizsgal()
 {
-    if(_s=="X" || _s=="O")
+    if(_s!=" ")
+    {
         voltmar=true;
+    }
 }
-bool StaticText::is_voltmar() const
+bool StaticText::x_volt()
 {
-    return voltmar;
+    if(_s=="X")
+    {
+        xvolt=true;
+        return xvolt;
+    }
+}
+bool StaticText::o_volt()
+{
+    if(_s=="O")
+    {
+        ovolt=true;
+        return ovolt;
+    }
 }
 

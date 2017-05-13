@@ -5,7 +5,7 @@ using namespace genv;
 ExampleCheckBox::ExampleCheckBox(int x, int y, int sx, int sy)
     : Widget(x,y,sx,sy)
 {
-    _checked=1;
+    _checked=false;
 }
 
 void ExampleCheckBox::draw() const

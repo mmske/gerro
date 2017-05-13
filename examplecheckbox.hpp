@@ -13,7 +13,7 @@ public:
     ExampleCheckBox(int x, int y, int sx, int sy);
     virtual void draw() const ;
     virtual void handle(genv::event ev);
-    bool is_checked() const
+    virtual bool is_checked() const
     {
         return _checked;
     }

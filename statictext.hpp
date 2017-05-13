@@ -8,11 +8,18 @@ class StaticText : public Widget
 protected:
     std::string _s;
     bool voltmar;
+    bool xvolt;
+    bool ovolt;
 public:
     StaticText(int x, int y, int sx, int sy, std::string s);
     virtual void draw() const ;
     virtual void vizsgal() ;
-    virtual bool is_voltmar() const ;
+    bool x_volt();
+    bool o_volt();
+    virtual bool is_voltmar() const
+    {
+        return voltmar;
+    }
     void setText(std::string s)
     {
         _s=s;
