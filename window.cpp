@@ -21,7 +21,7 @@ Window::Window(int XX,int YY,int db,string neve)
 
 void Window::feltolt()
 {
-    for(int i=0; i<_db; i++)
+    for(int i=0; i<_db+1; i++)
     {
         for(int j=0; j<_db; j++)
         {
@@ -91,7 +91,7 @@ void Window::motor()
             sz++;
         }
     }
-    if( sz==0 )
+    if( sz==_db+1 )
     {
         endjatek();
     }
@@ -106,17 +106,19 @@ void Window::event_loop()
     int focus = -1;
     PushButton *pb;
     PushButton *pb2;
-    pb=new PushButton(650,50,80,30,"Játék",false);
-    pb2=new PushButton(650,50,80,30,"Kilépés",false);
+    pb=new PushButton(650,50,80,30,"JÃ¡tÃ©k",false);
+    pb2=new PushButton(650,50,80,30,"KilÃ©pÃ©s",false);
     while(gin>>ev && game)
     {
         if(kilep==false)
         {
-            if(pb2->getJatek()==true)
+            pb2->draw();
+            pb2->handle(ev);
+            if(pb2->getJatek()==false)
             {
-                pb2->handle(ev);
-                pb2->draw();
+                game=false;
             }
+            gout<<refresh;
         }
         else
         {
@@ -146,7 +148,8 @@ void Window::event_loop()
                     pb2->setJatek(true);
                 }
             }
-            gout << refresh;
+            gout<<move_to(_db*30,0)<<color(0,0,0)<<box(30,_db*30)<<refresh;
         }
     }
 }
+
