@@ -10,6 +10,7 @@ class PushButton : public Widget
 public:
     PushButton(int x, int y, int sx, int sy, std::string s,bool jatek);
     void draw() const ;
+    void torol() ;
     void handle(genv::event ev);
     bool getJatek()
     {

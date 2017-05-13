@@ -16,7 +16,6 @@ Window::Window(int XX,int YY,int db,string neve)
     kov_jatekos=true;
     kilep=true;
     game=true;
-    sz=0;
 }
 
 void Window::feltolt()
@@ -34,14 +33,12 @@ void Window::feltolt()
         }
     }
 }
-
 void Window::endjatek()
 {
     Vegevan *vg=new Vegevan(100,700,255,255,255,"Vege a jateknak!");
     vg->draw();
     kilep=false;
 }
-
 void Window::motor()
 {
     string xvagyy="";
@@ -84,18 +81,6 @@ void Window::motor()
             endjatek();
         }
     }
-    for(int i=0; i<_db*_db; i++)
-    {
-        if(widgetstx[i]->getText()==" ")
-        {
-            sz++;
-        }
-    }
-    if( sz==_db+1 )
-    {
-        endjatek();
-    }
-
 }
 
 void Window::event_loop()
@@ -103,26 +88,24 @@ void Window::event_loop()
     gout.open(_XX,_YY);
     gout.set_title(_neve);
     event ev;
-    int focus = -1;
+    int focus=-1;
     PushButton *pb;
     PushButton *pb2;
-    pb=new PushButton(650,50,80,30,"JÃ¡tÃ©k",false);
-    pb2=new PushButton(650,50,80,30,"KilÃ©pÃ©s",false);
+    pb=new PushButton(650,50,80,30,"Játék",false);
+    pb2=new PushButton(650,50,80,30,"Kilépés",false);
     while(gin>>ev && game)
     {
         if(kilep==false)
         {
             pb2->draw();
             pb2->handle(ev);
-            if(pb2->getJatek()==false)
+            if(pb2->getJatek()==true)
             {
                 game=false;
             }
-            gout<<refresh;
         }
         else
         {
-            motor();
             if (ev.type==ev_mouse)
             {
                 for (size_t i=0; i<widgetsex.size(); i++)
@@ -133,6 +116,7 @@ void Window::event_loop()
                     }
                 }
             }
+            motor();
             if (focus!=-1)
             {
                 widgetsex[focus]->handle(ev);
@@ -143,13 +127,13 @@ void Window::event_loop()
                 pb->handle(ev);
                 if(pb->getJatek()==true)
                 {
+                    pb->torol();
                     widgetsex[i]->draw();
                     widgetstx[i]->draw();
-                    pb2->setJatek(true);
                 }
             }
-            gout<<move_to(_db*30,0)<<color(0,0,0)<<box(30,_db*30)<<refresh;
+            gout<<move_to(_db*30,0)<<color(0,0,0)<<box(30,_db*30);
         }
+        gout<<refresh;
     }
 }
-
