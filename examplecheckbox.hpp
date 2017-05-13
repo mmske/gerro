@@ -18,7 +18,6 @@ public:
     {
         return _checked;
     }
-
 };
 
 

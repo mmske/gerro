@@ -6,17 +6,20 @@
 class PushButton : public Widget
 {
     std::string _s;
-    bool jatek;
+    bool _jatek;
 public:
-    PushButton(int x, int y, int sx, int sy, std::string s);
+    PushButton(int x, int y, int sx, int sy, std::string s,bool jatek);
     void draw() const ;
-    void torol() const ;
     void handle(genv::event ev);
-    bool jateke() const
+    bool getJatek()
     {
-        return jatek;
+        return _jatek;
     }
-};
+    void setJatek(bool jatek)
+    {
+        _jatek=jatek;
+    }
 
+};
 
 #endif // PUSHBUTTON_HPP_INCLUDED

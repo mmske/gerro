@@ -3,10 +3,10 @@
 using namespace std;
 using namespace genv;
 
-PushButton::PushButton(int x, int y, int sx, int sy, string s): Widget(x,y,sx,sy)
+PushButton::PushButton(int x, int y, int sx, int sy, string s,bool jatek): Widget(x,y,sx,sy)
 {
     _s=s;
-    jatek=false;
+    _jatek=jatek;
 }
 
 void PushButton::draw() const
@@ -20,11 +20,11 @@ void PushButton::handle(genv::event ev)
 {
     if (is_selected(ev.pos_x,ev.pos_y) && ev.type==ev_mouse && ev.button==btn_left)
     {
-        jatek=true;
+        _jatek=true;
     }
-    else if (is_selected(ev.pos_x,ev.pos_y) && ev.type==ev_mouse && ev.button==btn_left && jatek==true)
+    else if (is_selected(ev.pos_x,ev.pos_y) && ev.type==ev_mouse && ev.button==btn_left && _jatek==true)
     {
-        jatek=false;
+        _jatek=false;
     }
 }
 
