@@ -3,35 +3,22 @@
 #include <string>
 #include "widgets.hpp"
 
+using namespace genv;
+using namespace std;
+
 class StaticText : public Widget
 {
 protected:
-    std::string _s;
-    bool voltmar;
-    bool xvolt;
-    bool ovolt;
+    string _s;
 public:
-    StaticText(int x, int y, int sx, int sy, std::string s);
-    virtual void draw() const ;
-    virtual void vizsgal() ;
-    bool x_volt();
-    bool o_volt();
-    virtual bool is_voltmar() const
-    {
-        return voltmar;
-    }
-    void setText(std::string s)
+    StaticText(int x, int y, int sx, int sy, string s);
+    void draw() const ;
+    void setText(string s)
     {
         _s=s;
     }
-    inline std::string value()
+    string getText()
     {
-        _s="X";
-        return _s;
-    }
-    inline std::string value2()
-    {
-        _s="O";
         return _s;
     }
 };
