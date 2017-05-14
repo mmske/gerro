@@ -42,7 +42,7 @@ void Window::endjatek()
 void Window::motor()
 {
     string XvagyO="";
-    for(size_t i=0; i<widgetstx.size(); i++)
+    for(int i=0; i<_db*_db; i++)
     {
         if(widgetsex[i]->is_checked() && kov_jatekos==true && widgetstx[i]->getText()==" " )
         {
@@ -56,25 +56,37 @@ void Window::motor()
             kov_jatekos=true;
             XvagyO="O";
         }
+    }
+    for(int i=0; i<(_db*_db); i++)
+    {
         if(widgetstx[i]->getText()==XvagyO && widgetstx[i+1]->getText()==XvagyO
                 && widgetstx[i+2]->getText()==XvagyO && widgetstx[i+3]->getText()==XvagyO
                 && widgetstx[i+4]->getText()==XvagyO)
         {
             endjatek();
         }
-        else if(widgetstx[i]->getText()==XvagyO && widgetstx[i+_db]->getText()==XvagyO
+    }
+    for(int i=0; i<(_db*_db); i++)
+    {
+        if(widgetstx[i]->getText()==XvagyO && widgetstx[i+_db]->getText()==XvagyO
                 && widgetstx[i+2*_db]->getText()==XvagyO && widgetstx[i+3*_db]->getText()==XvagyO
                 && widgetstx[i+4*_db]->getText()==XvagyO)
         {
             endjatek();
         }
-        else if(widgetstx[i]->getText()==XvagyO && widgetstx[(i+_db)+1]->getText()==XvagyO
+    }
+    for(int i=0; i<(_db*_db); i++)
+    {
+        if(widgetstx[i]->getText()==XvagyO && widgetstx[(i+_db)+1]->getText()==XvagyO
                 && widgetstx[(i+2*_db)+2]->getText()==XvagyO && widgetstx[(i+3*_db)+3]->getText()==XvagyO
                 && widgetstx[(i+4*_db)+4]->getText()==XvagyO)
         {
             endjatek();
         }
-        else if(widgetstx[i]->getText()==XvagyO && widgetstx[(i+_db)-1]->getText()==XvagyO
+    }
+    for(int i=0; i<(_db*_db); i++)
+    {
+        if(widgetstx[i]->getText()==XvagyO && widgetstx[(i+_db)-1]->getText()==XvagyO
                 && widgetstx[(i+2*_db)-2]->getText()==XvagyO && widgetstx[(i+3*_db)-3]->getText()==XvagyO
                 && widgetstx[(i+4*_db)-4]->getText()==XvagyO)
         {
@@ -137,4 +149,5 @@ void Window::event_loop()
         gout<<refresh;
     }
 }
+
 
