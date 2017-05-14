@@ -16,16 +16,17 @@ Window::Window(int XX,int YY,int db,string neve)
     kov_jatekos=true;
     kilep=true;
     game=true;
+    ures=0;
 }
 
 void Window::feltolt()
 {
-    for(int i=0; i<_db+1; i++)
+    for(int i=0; i<=_db; i++)
     {
         for(int j=0; j<_db; j++)
         {
             StaticText *tx[i*j];
-            ExampleCheckBox *ex[i*j];
+            ExampleCheckBox *ex[i*j+1];
             ex[i*j]= new ExampleCheckBox(30*i,30*j,30,30);
             tx[i*j]= new StaticText(30*i,30*j,30,30," ");
             widgetsex.push_back(ex[i*j]);
@@ -36,7 +37,11 @@ void Window::feltolt()
 void Window::endjatek(string XvagyO)
 {
     Vegevan *vg=new Vegevan(100,700,255,255,255,XvagyO);
-    Vegevan *vg2=new Vegevan(100+gout.twidth(XvagyO)+4,700,255,255,255,"jatékos nyert!");
+    Vegevan *vg2;
+    if(XvagyO=="X" || XvagyO=="X")
+    {
+        vg2=new Vegevan(100+gout.twidth(XvagyO)+4,700,255,255,255,"jatékos nyert!");
+    }
     vg->draw();
     vg2->draw();
     kilep=false;
@@ -95,6 +100,17 @@ void Window::motor()
             endjatek(XvagyO);
         }
     }
+    for(int i=0; i<_db*_db-1; i++)
+    {
+        if(widgetstx[i]->getText()==" ")
+        {
+            ures++;
+        }
+    }
+    if(ures==0)
+    {
+        endjatek("Megtelt a pálya!");
+    }
 }
 void Window::event_loop()
 {
@@ -121,7 +137,7 @@ void Window::event_loop()
         {
             if (ev.type==ev_mouse)
             {
-                for (size_t i=0; i<widgetsex.size(); i++)
+                for (int i=0; i<_db*_db; i++)
                 {
                     if (widgetsex[i]->is_selected(ev.pos_x, ev.pos_y))
                     {
@@ -134,7 +150,7 @@ void Window::event_loop()
             {
                 widgetsex[focus]->handle(ev);
             }
-            for (size_t i=0; i<widgetsex.size(); i++)
+            for (int i=0; i<_db*_db; i++)
             {
                 pb->draw();
                 pb->handle(ev);
@@ -145,7 +161,6 @@ void Window::event_loop()
                     widgetstx[i]->draw();
                 }
             }
-            gout<<move_to(_db*30,0)<<color(0,0,0)<<box(30,_db*30);
         }
         gout<<refresh;
     }
