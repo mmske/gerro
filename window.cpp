@@ -3,7 +3,6 @@
 #include "examplecheckbox.hpp"
 #include "pushbutton.hpp"
 #include "vegevan.hpp"
-#include "iostream"
 
 using namespace genv;
 using namespace std;
@@ -41,7 +40,7 @@ void Window::endjatek(string asd)
     if(asd=="O" || asd=="X")
     {
         Vegevan *vg2;
-        vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatékos nyert!");
+        vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatÃ©kos nyert!");
         vg2->draw();
     }
     vg->draw();
@@ -113,8 +112,8 @@ void Window::event_loop()
     int focus=-1;
     PushButton *pb;
     PushButton *pb2;
-    pb=new PushButton(650,50,80,30,"Játék",false);
-    pb2=new PushButton(650,50,80,30,"Kilépés",false);
+    pb=new PushButton(650,50,80,30,"JÃ¡tÃ©k",false);
+    pb2=new PushButton(650,50,80,30,"KilÃ©pÃ©s",false);
     while(gin>>ev && game)
     {
         if(kilep==false)
@@ -141,7 +140,7 @@ void Window::event_loop()
             motor();
             if(van==_db*_db)
             {
-                endjatek("Megtelt a pálya! Döntetlen");
+                endjatek("Megtelt a pÃ¡lya! DÃ¶ntetlen");
             }
             if (focus!=-1)
             {
