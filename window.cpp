@@ -3,6 +3,7 @@
 #include "examplecheckbox.hpp"
 #include "pushbutton.hpp"
 #include "vegevan.hpp"
+#include "iostream"
 
 using namespace genv;
 using namespace std;
@@ -16,7 +17,6 @@ Window::Window(int XX,int YY,int db,string neve)
     kov_jatekos=true;
     kilep=true;
     game=true;
-    ures=0;
 }
 
 void Window::feltolt()
@@ -38,12 +38,9 @@ void Window::endjatek(string asd)
 {
     Vegevan *vg=new Vegevan(100,700,255,255,255,asd);
     Vegevan *vg2;
-    if(asd=="X" || asd=="O")
-    {
-        vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatékos nyert!");
-    }
-    vg->draw();
+    vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatékos nyert!");
     vg2->draw();
+    vg->draw();
     kilep=false;
 }
 void Window::motor()
@@ -100,18 +97,8 @@ void Window::motor()
             endjatek(XvagyO);
         }
     }
-    for(int i=0; i<_db*_db-1; i++)
-    {
-        if(widgetstx[i]->getText()==" ")
-        {
-            ures++;
-        }
-    }
-    if(ures==0)
-    {
-        endjatek("Megtelt a pálya!");
-    }
 }
+
 void Window::event_loop()
 {
     gout.open(_XX,_YY);
