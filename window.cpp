@@ -17,11 +17,12 @@ Window::Window(int XX,int YY,int db,string neve)
     kov_jatekos=true;
     kilep=true;
     game=true;
+    van=0;
 }
 
 void Window::feltolt()
 {
-    for(int i=0; i<=_db; i++)
+    for(int i=0; i<=_db+1; i++)
     {
         for(int j=0; j<_db; j++)
         {
@@ -37,9 +38,12 @@ void Window::feltolt()
 void Window::endjatek(string asd)
 {
     Vegevan *vg=new Vegevan(100,700,255,255,255,asd);
-    Vegevan *vg2;
-    vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatékos nyert!");
-    vg2->draw();
+    if(asd=="O" || asd=="X")
+    {
+        Vegevan *vg2;
+        vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatékos nyert!");
+        vg2->draw();
+    }
     vg->draw();
     kilep=false;
 }
@@ -53,12 +57,14 @@ void Window::motor()
             widgetstx[i]->setText("X");
             kov_jatekos=false;
             XvagyO="X";
+            van++;
         }
         else if(widgetsex[i]->is_checked() && kov_jatekos==false && widgetstx[i]->getText()==" ")
         {
             widgetstx[i]->setText("O");
             kov_jatekos=true;
             XvagyO="O";
+            van++;
         }
     }
     for(int i=0; i<(_db*_db); i++)
@@ -133,6 +139,10 @@ void Window::event_loop()
                 }
             }
             motor();
+            if(van==_db*_db)
+            {
+                endjatek("Megtelt a pálya! Döntetlen");
+            }
             if (focus!=-1)
             {
                 widgetsex[focus]->handle(ev);
