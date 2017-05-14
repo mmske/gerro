@@ -22,7 +22,7 @@ public:
     void event_loop() ;
     void feltolt() ;
     void motor() ;
-    void endjatek() ;
+    void endjatek(string asd) ;
 };
 
 #endif // WINDOW_HPP_INCLUDED

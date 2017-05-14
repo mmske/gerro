@@ -33,10 +33,12 @@ void Window::feltolt()
         }
     }
 }
-void Window::endjatek()
+void Window::endjatek(string XvagyO)
 {
-    Vegevan *vg=new Vegevan(100,700,255,255,255,"Vege a jateknak!");
+    Vegevan *vg=new Vegevan(100,700,255,255,255,XvagyO);
+    Vegevan *vg2=new Vegevan(100+gout.twidth(XvagyO)+4,700,255,255,255,"jatékos nyert!");
     vg->draw();
+    vg2->draw();
     kilep=false;
 }
 void Window::motor()
@@ -63,7 +65,7 @@ void Window::motor()
                 && widgetstx[i+2]->getText()==XvagyO && widgetstx[i+3]->getText()==XvagyO
                 && widgetstx[i+4]->getText()==XvagyO)
         {
-            endjatek();
+            endjatek(XvagyO);
         }
     }
     for(int i=0; i<(_db*_db); i++)
@@ -72,7 +74,7 @@ void Window::motor()
                 && widgetstx[i+2*_db]->getText()==XvagyO && widgetstx[i+3*_db]->getText()==XvagyO
                 && widgetstx[i+4*_db]->getText()==XvagyO)
         {
-            endjatek();
+            endjatek(XvagyO);
         }
     }
     for(int i=0; i<(_db*_db); i++)
@@ -81,7 +83,7 @@ void Window::motor()
                 && widgetstx[(i+2*_db)+2]->getText()==XvagyO && widgetstx[(i+3*_db)+3]->getText()==XvagyO
                 && widgetstx[(i+4*_db)+4]->getText()==XvagyO)
         {
-            endjatek();
+            endjatek(XvagyO);
         }
     }
     for(int i=0; i<(_db*_db); i++)
@@ -90,11 +92,10 @@ void Window::motor()
                 && widgetstx[(i+2*_db)-2]->getText()==XvagyO && widgetstx[(i+3*_db)-3]->getText()==XvagyO
                 && widgetstx[(i+4*_db)-4]->getText()==XvagyO)
         {
-            endjatek();
+            endjatek(XvagyO);
         }
     }
 }
-
 void Window::event_loop()
 {
     gout.open(_XX,_YY);
@@ -103,8 +104,8 @@ void Window::event_loop()
     int focus=-1;
     PushButton *pb;
     PushButton *pb2;
-    pb=new PushButton(650,50,80,30,"JÃ¡tÃ©k",false);
-    pb2=new PushButton(650,50,80,30,"KilÃ©pÃ©s",false);
+    pb=new PushButton(650,50,80,30,"Játék",false);
+    pb2=new PushButton(650,50,80,30,"Kilépés",false);
     while(gin>>ev && game)
     {
         if(kilep==false)
@@ -149,5 +150,3 @@ void Window::event_loop()
         gout<<refresh;
     }
 }
-
-
