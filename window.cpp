@@ -41,42 +41,42 @@ void Window::endjatek()
 }
 void Window::motor()
 {
-    string xvagyy="";
+    string XvagyO="";
     for(size_t i=0; i<widgetstx.size(); i++)
     {
         if(widgetsex[i]->is_checked() && kov_jatekos==true && widgetstx[i]->getText()==" " )
         {
             widgetstx[i]->setText("X");
             kov_jatekos=false;
-            xvagyy="X";
+            XvagyO="X";
         }
         else if(widgetsex[i]->is_checked() && kov_jatekos==false && widgetstx[i]->getText()==" ")
         {
             widgetstx[i]->setText("O");
             kov_jatekos=true;
-            xvagyy="O";
+            XvagyO="O";
         }
-        if(widgetstx[i]->getText()==xvagyy && widgetstx[i+1]->getText()==xvagyy
-                && widgetstx[i+2]->getText()==xvagyy && widgetstx[i+3]->getText()==xvagyy
-                && widgetstx[i+4]->getText()==xvagyy)
+        if(widgetstx[i]->getText()==XvagyO && widgetstx[i+1]->getText()==XvagyO
+                && widgetstx[i+2]->getText()==XvagyO && widgetstx[i+3]->getText()==XvagyO
+                && widgetstx[i+4]->getText()==XvagyO)
         {
             endjatek();
         }
-        else if(widgetstx[i]->getText()==xvagyy && widgetstx[i+_db]->getText()==xvagyy
-                && widgetstx[i+2*_db]->getText()==xvagyy && widgetstx[i+3*_db]->getText()==xvagyy
-                && widgetstx[i+4*_db]->getText()==xvagyy)
+        else if(widgetstx[i]->getText()==XvagyO && widgetstx[i+_db]->getText()==XvagyO
+                && widgetstx[i+2*_db]->getText()==XvagyO && widgetstx[i+3*_db]->getText()==XvagyO
+                && widgetstx[i+4*_db]->getText()==XvagyO)
         {
             endjatek();
         }
-        else if(widgetstx[i]->getText()==xvagyy && widgetstx[(i+_db)+1]->getText()==xvagyy
-                && widgetstx[(i+2*_db)+2]->getText()==xvagyy && widgetstx[(i+3*_db)+3]->getText()==xvagyy
-                && widgetstx[(i+4*_db)+4]->getText()==xvagyy)
+        else if(widgetstx[i]->getText()==XvagyO && widgetstx[(i+_db)+1]->getText()==XvagyO
+                && widgetstx[(i+2*_db)+2]->getText()==XvagyO && widgetstx[(i+3*_db)+3]->getText()==XvagyO
+                && widgetstx[(i+4*_db)+4]->getText()==XvagyO)
         {
             endjatek();
         }
-        else if(widgetstx[i]->getText()==xvagyy && widgetstx[(i+_db)-1]->getText()==xvagyy
-                && widgetstx[(i+2*_db)-2]->getText()==xvagyy && widgetstx[(i+3*_db)-3]->getText()==xvagyy
-                && widgetstx[(i+4*_db)-4]->getText()==xvagyy)
+        else if(widgetstx[i]->getText()==XvagyO && widgetstx[(i+_db)-1]->getText()==XvagyO
+                && widgetstx[(i+2*_db)-2]->getText()==XvagyO && widgetstx[(i+3*_db)-3]->getText()==XvagyO
+                && widgetstx[(i+4*_db)-4]->getText()==XvagyO)
         {
             endjatek();
         }
@@ -91,8 +91,8 @@ void Window::event_loop()
     int focus=-1;
     PushButton *pb;
     PushButton *pb2;
-    pb=new PushButton(650,50,80,30,"Játék",false);
-    pb2=new PushButton(650,50,80,30,"Kilépés",false);
+    pb=new PushButton(650,50,80,30,"JÃ¡tÃ©k",false);
+    pb2=new PushButton(650,50,80,30,"KilÃ©pÃ©s",false);
     while(gin>>ev && game)
     {
         if(kilep==false)
@@ -137,3 +137,4 @@ void Window::event_loop()
         gout<<refresh;
     }
 }
+
