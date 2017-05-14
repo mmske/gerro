@@ -34,13 +34,13 @@ void Window::feltolt()
         }
     }
 }
-void Window::endjatek(string XvagyO)
+void Window::endjatek(string asd)
 {
-    Vegevan *vg=new Vegevan(100,700,255,255,255,XvagyO);
+    Vegevan *vg=new Vegevan(100,700,255,255,255,asd);
     Vegevan *vg2;
-    if(XvagyO=="X" || XvagyO=="X")
+    if(asd=="X" || asd=="O")
     {
-        vg2=new Vegevan(100+gout.twidth(XvagyO)+4,700,255,255,255,"jatékos nyert!");
+        vg2=new Vegevan(100+gout.twidth(asd)+4,700,255,255,255,"jatékos nyert!");
     }
     vg->draw();
     vg2->draw();
