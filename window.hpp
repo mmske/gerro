@@ -15,7 +15,7 @@ protected:
     vector<ExampleCheckBox*> widgetsex;
     vector<StaticText*> widgetstx;
     string _neve;
-    int _XX,_YY,_db,sz;
+    int _XX,_YY,_db,van;
     bool kov_jatekos,kilep,game;
 public:
     Window(int XX,int YY,int db,string neve);
